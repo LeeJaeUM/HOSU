@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     float moveX = 0;
     float moveZ = 0;
     Vector3 movement = Vector3.zero;
-    public float moveSpeed = 2;
+    public float moveSpeed = 3;
+
+    public Transform MainCameraTr;
 
     private void Awake()
     {
@@ -60,7 +62,9 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rigid.velocity = movement * moveSpeed;
+        Vector3 cameraForward = 
+
+        rigid.velocity = movement * moveSpeed; 
     }
 
 }
