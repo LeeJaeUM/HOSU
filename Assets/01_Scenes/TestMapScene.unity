@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 158292283}
   - component: {fileID: 158292282}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: washing machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 320372560}
   - component: {fileID: 320372559}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 722557861}
   - component: {fileID: 722557860}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: Door_Toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 748301231}
   - component: {fileID: 748301230}
   m_Layer: 0
-  m_Name: Cube (10)
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 808516271}
   - component: {fileID: 808516270}
   m_Layer: 0
-  m_Name: Cube (15)
+  m_Name: clock_livingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1630,13 +1630,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.49999848, w: 0.5000015}
+  m_LocalPosition: {x: -2.15, y: 22.31, z: 1.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!1 &1019477737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,7 +1687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045798459}
   m_Layer: 0
-  m_Name: toillet
+  m_Name: toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1828,7 +1828,7 @@ GameObject:
   - component: {fileID: 1116780379}
   - component: {fileID: 1116780378}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: storage_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 1172939899}
   - component: {fileID: 1172939898}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Door_bedRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2071,7 +2071,7 @@ GameObject:
   - component: {fileID: 1231141050}
   - component: {fileID: 1231141049}
   m_Layer: 0
-  m_Name: Cube (12)
+  m_Name: sofa_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2176,7 +2176,7 @@ GameObject:
   - component: {fileID: 1309228168}
   - component: {fileID: 1309228167}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: toilet_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2598,7 +2598,7 @@ GameObject:
   - component: {fileID: 1452796953}
   - component: {fileID: 1452796952}
   m_Layer: 0
-  m_Name: wq
+  m_Name: table_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2686,7 +2686,7 @@ Transform:
   m_GameObject: {fileID: 1452796951}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.92, y: 0, z: 0}
   m_LocalScale: {x: 0.31941, y: 0.31941, z: 0.31941}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2705,7 +2705,7 @@ GameObject:
   - component: {fileID: 1469271678}
   - component: {fileID: 1469271677}
   m_Layer: 0
-  m_Name: wq (1)
+  m_Name: table_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2812,7 +2812,7 @@ GameObject:
   - component: {fileID: 1530976563}
   - component: {fileID: 1530976562}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: storage_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2917,7 +2917,7 @@ GameObject:
   - component: {fileID: 1543508948}
   - component: {fileID: 1543508947}
   m_Layer: 0
-  m_Name: vvvvvvvvvvvvvvvvvvv (1)
+  m_Name: toilet_seet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3022,7 +3022,7 @@ GameObject:
   - component: {fileID: 1585367393}
   - component: {fileID: 1585367392}
   m_Layer: 0
-  m_Name: vvvvvvvvvvvvvvvvvvv
+  m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3232,7 +3232,7 @@ GameObject:
   - component: {fileID: 1678344101}
   - component: {fileID: 1678344100}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: closet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3337,7 +3337,7 @@ GameObject:
   - component: {fileID: 1700100627}
   - component: {fileID: 1700100626}
   m_Layer: 0
-  m_Name: Cube (14)
+  m_Name: sellPhone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3442,7 +3442,7 @@ GameObject:
   - component: {fileID: 1788312030}
   - component: {fileID: 1788312029}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: clock_bedRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3547,7 +3547,7 @@ GameObject:
   - component: {fileID: 1792644215}
   - component: {fileID: 1792644214}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: Door_frontDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3687,7 +3687,7 @@ GameObject:
   - component: {fileID: 1836427692}
   - component: {fileID: 1836427691}
   m_Layer: 0
-  m_Name: Cube (9)
+  m_Name: refrigerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3792,7 +3792,7 @@ GameObject:
   - component: {fileID: 1981482866}
   - component: {fileID: 1981482865}
   m_Layer: 0
-  m_Name: Cube (11)
+  m_Name: sofa_seet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4002,7 +4002,7 @@ GameObject:
   - component: {fileID: 2070143920}
   - component: {fileID: 2070143919}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: Shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
