@@ -8,6 +8,7 @@ public class InteractAction : MonoBehaviour
     public float interactDistance = 3f; // 상호작용 가능한 최대 거리
 
 
+
     void Update()
     {
        // brain.

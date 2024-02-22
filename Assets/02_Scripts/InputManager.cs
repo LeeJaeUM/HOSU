@@ -37,16 +37,13 @@ public class InputManager : MonoBehaviour
     {
         inputActions.Disable();
     }
-
-    public Vector2 GetPlayerMovement()
-    {
-        return inputActions.Player.Move.ReadValue<Vector2>();
-    }
-    public Vector2 GetMousDelta()
-    {
-        return inputActions.Player.Look.ReadValue<Vector2>();
-    }
-
-
+        public Vector2 GetPlayerMovement()
+        {
+            return inputActions.Player.Move.ReadValue<Vector2>();
+        }
+        public Vector2 GetMousDelta()
+        {
+            return inputActions.Player.Look.ReadValue<Vector2>();
+        }
 
 }
