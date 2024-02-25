@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: (Prb)SeparatorDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 1650206321148605847, guid: b516bb7d62f4bfc4c86b3c28e7e0ef95, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: e8edf1872897401499f2eb90e963dfec, type: 2}
     - target: {fileID: 5172462016367756550, guid: b516bb7d62f4bfc4c86b3c28e7e0ef95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.64
