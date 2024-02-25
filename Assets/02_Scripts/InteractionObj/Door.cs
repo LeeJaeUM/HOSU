@@ -8,19 +8,16 @@ public class Door : MonoBehaviour, IInteractable
 
     readonly int IsOpen_Hash = Animator.StringToHash("isOpen");
 
-    [SerializeField] private BoxCollider doorBodyCollider;
+   // [SerializeField] private BoxCollider[] doorBodyColliders;
     [SerializeField] private bool isOpen = false;
 
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
 
     private void Start()
     {
-        DoorBody doorBody = GetComponentInChildren<DoorBody>();
-        doorBodyCollider = doorBody.doorBodyCol;
+        anim = GetComponent<Animator>();
+        //doorBodyColliders = GetComponentsInChildren<BoxCollider>();
     }
+
     public void Interaction()
     {
         Debug.Log("물체와 상호 작용했습니다!");
