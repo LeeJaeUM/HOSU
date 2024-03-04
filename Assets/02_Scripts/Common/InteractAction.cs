@@ -7,10 +7,22 @@ public class InteractAction : MonoBehaviour
 {
     public float interactDistance = 3f; // 상호작용 가능한 최대 거리
 
+    Light flash;
+    bool isFlashOn = false;
 
+    private void Start()
+    {
+        flash = GetComponentInChildren<Light>();
+    }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isFlashOn = !isFlashOn;
+            flash.enabled = isFlashOn;
+        }
+
        // brain.
 
         RaycastHit hit; // Ray에 부딪힌 물체 정보를 저장할 변수

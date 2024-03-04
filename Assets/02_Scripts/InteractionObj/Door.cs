@@ -8,14 +8,12 @@ public class Door : MonoBehaviour, IInteractable
 
     readonly int IsOpen_Hash = Animator.StringToHash("isOpen");
 
-   // [SerializeField] private BoxCollider[] doorBodyColliders;
     [SerializeField] private bool isOpen = false;
 
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        //doorBodyColliders = GetComponentsInChildren<BoxCollider>();
     }
 
     public void Interaction()
@@ -24,5 +22,18 @@ public class Door : MonoBehaviour, IInteractable
         // 물체와의 상호 작용에 대한 추가적인 코드
         isOpen = !isOpen;
         anim.SetBool(IsOpen_Hash, isOpen);
+    }
+
+    public void DoorClose()
+    {
+        StartCoroutine(DoorClose_Co());
+    }
+
+    IEnumerator DoorClose_Co()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isOpen = false;
+        anim.SetBool(IsOpen_Hash, isOpen);
+        Debug.Log($"{gameObject.name}의 문이 닫힘{isOpen}");
     }
 }
