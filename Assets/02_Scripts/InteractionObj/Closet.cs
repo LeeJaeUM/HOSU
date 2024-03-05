@@ -6,7 +6,7 @@ using Cinemachine;
 public class Closet : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    CinemachineVirtualCamera closetCamera;
+    CinemachineVirtualCamera closetCamera;  //카메라 미사용
     [SerializeField]
     bool isCameraOn = false;
 
@@ -22,18 +22,22 @@ public class Closet : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        /*
         if (isCameraOn && Input.GetKeyDown(KeyCode.E))
         {
             isCameraOn = !isCameraOn;
             closetCamera.Priority = 0;
             leftDoor.DoorClose();
             rightDoor.DoorClose();
-        }
+        }*/
     }
 
     public void Interaction()
     {
-        isCameraOn = !isCameraOn;
+        leftDoor.DoorClose();
+        rightDoor.DoorClose();
+        /*
+                 isCameraOn = !isCameraOn;
         if (isCameraOn)
         {
             closetCamera.Priority = 30;
@@ -41,5 +45,11 @@ public class Closet : MonoBehaviour, IInteractable
             leftDoor.DoorClose();
             rightDoor.DoorClose();
         }
+        else
+        {
+            closetCamera.Priority = 0;
+        }
+         */
+
     }
 }
