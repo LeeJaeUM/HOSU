@@ -17,15 +17,16 @@ public class Bed : MonoBehaviour ,IInteractable
 
     private void Update()
     {
-        if(isCameraOn && Input.GetKeyDown(KeyCode.E))
+        if(isCameraOn && Input.GetKeyDown(KeyCode.Q))
         {
-            isCameraOn = !isCameraOn;
-            bedCamera.Priority = 0;
+           isCameraOn = !isCameraOn;
+           bedCamera.Priority = 0;
         }
     }
 
     public void Interaction()
     {
+        Debug.Log("さぇいさぇさいさ");
         isCameraOn = !isCameraOn;
         if (isCameraOn)
         {
