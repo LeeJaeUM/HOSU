@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Bed : MonoBehaviour ,IInteractable
+public class BedCheck : MonoBehaviour, IInteractable
 {
     [SerializeField]
     CinemachineVirtualCamera bedCamera;
