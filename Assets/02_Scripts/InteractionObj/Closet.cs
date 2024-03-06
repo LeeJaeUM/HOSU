@@ -5,8 +5,8 @@ using Cinemachine;
 
 public class Closet : MonoBehaviour, IInteractable
 {
-    [SerializeField]
-    CinemachineVirtualCamera closetCamera;  //카메라 미사용
+   // [SerializeField]
+   // CinemachineVirtualCamera closetCamera;  //카메라 미사용
     [SerializeField]
     bool isCameraOn = false;
 
@@ -15,7 +15,7 @@ public class Closet : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        closetCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+       //closetCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         leftDoor = transform.GetChild(2).GetComponent<Door>();
         rightDoor = transform.GetChild(3).GetComponent<Door>();
     }
