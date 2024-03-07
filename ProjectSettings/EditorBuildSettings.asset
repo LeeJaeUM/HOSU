@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scenes/MapTestControll/TestMapScene 1.unity
     guid: 4922c30e40bee3c4f801c1f2799838b0
+  - enabled: 1
+    path: Assets/01_Scenes/LoadingScene.unity
+    guid: 8585171ddeafafc47a0d455c07214d4e
+  - enabled: 1
+    path: Assets/01_Scenes/MapTestControll/TestMapScene 5_Bed_Closet.unity
+    guid: f5e15a0612300ea4cba1e4f94a1a99c2
   m_configObjects: {}
