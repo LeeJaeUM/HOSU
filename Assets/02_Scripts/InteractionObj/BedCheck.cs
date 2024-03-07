@@ -32,6 +32,8 @@ public class BedCheck : MonoBehaviour, IInteractable
             bedCamera.Priority = 30;
 
             isCameraOn = true;
+
+            GameManager.Inst.isCheck_UnderBed = true;
         }
         else
         {

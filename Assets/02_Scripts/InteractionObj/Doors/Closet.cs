@@ -22,14 +22,14 @@ public class Closet : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        /*
-        if (isCameraOn && Input.GetKeyDown(KeyCode.E))
+        if(!leftDoor.IsOpen && !rightDoor.IsOpen)
         {
-            isCameraOn = !isCameraOn;
-            closetCamera.Priority = 0;
-            leftDoor.DoorClose();
-            rightDoor.DoorClose();
-        }*/
+            GameManager.Inst.isDoorLock_Closet = true;
+        }
+        else
+        {
+            GameManager.Inst.isDoorLock_Closet = false;
+        }
     }
 
     public void Interaction()

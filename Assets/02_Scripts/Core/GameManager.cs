@@ -24,9 +24,12 @@ public class GameManager : MonoBehaviour
     public bool isWoodPanelHave = false;
 
     [Header("클리어 조건 판단")]
-    public bool isDoorLock_Bedroom = false;
-    public bool isDoorLock_LivingroomWindow = false;
-    public bool isWindowBlockwood_Bedroom = false;
-    public bool isWindowBlockwood_Livingroom = false;
-
+    public bool isDoorLock_Front = false;               //정문 닫기
+    public bool isDoorLock_Bedroom = false;             //침실문 닫기
+    public bool isDoorLock_LivingroomWindow = false;    //거실문 닫기
+    public bool isDoorLock_Toilet = false;              //화장실 문 닫기
+    public bool isDoorLock_Closet = false;              //옷장 닫기
+    public bool isWindowBlockwood_Bedroom = false;      //침실 창문 방지
+    public bool isWindowBlockwood_Livingroom = false;   //거실 창문 방지
+    public bool isCheck_UnderBed = false;               //침대 아래 확인
 }

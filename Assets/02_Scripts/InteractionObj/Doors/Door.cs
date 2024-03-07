@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    Animator anim;
+    protected Animator anim;
 
-    readonly int IsOpen_Hash = Animator.StringToHash("isOpen");
+    readonly protected int IsOpen_Hash = Animator.StringToHash("isOpen");
 
-    [SerializeField] private bool isOpen = false;
+    [SerializeField] protected bool isOpen = false;
+    public bool IsOpen
+    {
+        get { return isOpen; }
+        protected set
+        {
+            if(isOpen != value)
+            {
+                isOpen = value;
+            }
+        }
+    }
 
 
     private void Start()
@@ -16,7 +27,7 @@ public class Door : MonoBehaviour, IInteractable
         anim = GetComponent<Animator>();
     }
 
-    public void Interaction()
+    public virtual void Interaction()
     {
         Debug.Log("물체와 상호 작용했습니다!");
         // 물체와의 상호 작용에 대한 추가적인 코드

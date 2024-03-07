@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &597647965940804851
 Transform:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 5524600480277389052}
   - component: {fileID: 8767863334560737618}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8276463622412934999}
   m_Layer: 0
-  m_Name: separatorDoor
+  m_Name: Door_LivingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,10 +624,10 @@ GameObject:
   - component: {fileID: 5023283052729987818}
   - component: {fileID: 3215030036149833564}
   - component: {fileID: 6442187104595616878}
-  - component: {fileID: 5107728155414244061}
   - component: {fileID: 7549681898307172237}
+  - component: {fileID: 6368316083239815267}
   m_Layer: 0
-  m_Name: separatorDoor_body
+  m_Name: Door_LivingRoom_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,25 +716,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.49, y: 2.84, z: 0.45}
+  m_Size: {x: 1.49, y: 2.84, z: 0.38}
   m_Center: {x: -0.6836324, y: 0.030193985, z: 0.00044994813}
---- !u!114 &5107728155414244061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302552813654946183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222931fb07424094d9dfd11b379761ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOpen: 0
 --- !u!95 &7549681898307172237
 Animator:
   serializedVersion: 5
@@ -756,6 +743,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6368316083239815267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302552813654946183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf41af44f90bdf4bb29d9bd3c8131f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!1 &7777540949586900555
 GameObject:
   m_ObjectHideFlags: 0
