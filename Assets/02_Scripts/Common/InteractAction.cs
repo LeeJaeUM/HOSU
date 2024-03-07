@@ -12,7 +12,7 @@ public class InteractAction : MonoBehaviour
 
     private void Start()
     {
-        flash = GetComponentInChildren<Light>();
+        flash = FlashHead.Inst.GetComponent<Light>();
     }
 
     void Update()
