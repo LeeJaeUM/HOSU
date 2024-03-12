@@ -1,11 +1,14 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public float displayTime = 2f; // 각 대사가 화면에 표시될 시간
-    public TextMeshProUGUI dialogueText;
+    public const float displayTime = 2f; // 각 대사가 화면에 표시될 시간
+    [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] Image textBackground;
+
     public string[] dialogues_1; // 대사들을 저장한 배열
     public string[] dialogues_2; // 대사들을 저장한 배열
     public string[] dialogues_3; // 대사들을 저장한 배열
@@ -33,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         dialogueText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        textBackground = transform.GetChild(0).GetComponent<Image>();
         startCheck = FindAnyObjectByType<StartCheck>();
         startCheck.onCheck += FirstDialogue;
         SetDialogues();
@@ -43,21 +47,23 @@ public class DialogueManager : MonoBehaviour
         //처음 눌렀을때
         if (!isRepeat)
         {
-            StartCoroutine(DisplayDialogues(dialogues_1));
+            StartCoroutine(DisplayDialogues(dialogues_1, 4.0f));
         }
     }
 
-    IEnumerator DisplayDialogues(string[] dialogues)
+    IEnumerator DisplayDialogues(string[] dialogues, float _displayTime = displayTime)
     {
         foreach (string dialogue in dialogues)
         {
             dialogueText.text = dialogue; // 대사를 UI 텍스트에 표시
+            textBackground.enabled = true;
 
             // 대사를 화면에 표시한 후 displayTime 동안 대기
             yield return new WaitForSeconds(displayTime);
 
             // 대기 후에 다음 대사를 표시하기 위해 UI 텍스트를 비움
             dialogueText.text = string.Empty;
+            textBackground.enabled = false;
         }
     }
     void SetDialogues()
