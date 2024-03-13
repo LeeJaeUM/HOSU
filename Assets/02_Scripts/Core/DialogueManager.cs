@@ -18,7 +18,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueTMP;
     [SerializeField] Image textBackground;
 
-    RectTransform tmpRect;
+    RectTransform dTMPRect;
+    RectTransform nameTMPRect;
     RectTransform thisRect;
 
     string player = "주인공 : ";
@@ -66,7 +67,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        tmpRect = dialogueTMP.gameObject.GetComponent<RectTransform>();
+        dTMPRect = dialogueTMP.gameObject.GetComponent<RectTransform>();
+        nameTMPRect = nameTMP.gameObject.GetComponent<RectTransform>();
         thisRect = GetComponent<RectTransform>();
         StartCoroutine(DisplayDialogues(dialogues_2, 2, 2f));      //테스트용 실행중
     }
@@ -88,10 +90,13 @@ public class DialogueManager : MonoBehaviour
     {
         // 텍스트가 보여지는 길이를 가져옵니다.
         Vector2 textSize = dialogueTMP.GetPreferredValues();
+        Vector2 nameSize = nameTMP.GetPreferredValues();
 
         // 오브젝트의 너비를 텍스트의 너비에 맞게 조정
-        Vector2 curTextSize = new Vector2(textSize.x + 100, tmpRect.sizeDelta.y);
-        tmpRect.sizeDelta = curTextSize;
+        Vector2 curTextSize = new Vector2(textSize.x + 120, dTMPRect.sizeDelta.y);
+        Vector2 curNameSize = new Vector2(nameSize.x + 50, dTMPRect.sizeDelta.y);
+        dTMPRect.sizeDelta = curTextSize;
+        nameTMPRect.sizeDelta = curNameSize;
         curTextSize.x += 50;
         thisRect.sizeDelta = curTextSize;
 
