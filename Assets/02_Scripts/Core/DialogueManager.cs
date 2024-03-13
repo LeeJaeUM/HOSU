@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public enum Speaker
+    {
+        Player = 0,
+        Unknown,
+        Monster
+    };
+    public Speaker speaker = Speaker.Player;
+    public bool isSpeakEnd = false;
     public const float displayTime = 2f; // 각 대사가 화면에 표시될 시간
     [SerializeField] TextMeshProUGUI nameTMP;
     [SerializeField] TextMeshProUGUI dialogueTMP;
@@ -41,9 +49,9 @@ public class DialogueManager : MonoBehaviour
 
     StartCheck startCheck;
 
-    public Color playerColor = new Color(0.8f, 0.6f, 1f); // 밝은 보라색
-    public Color unknownColor = Color.blue; // 파란색
-    public Color monsterColor = Color.green; // 초록색
+    public Color playerColor = new Color32(255,102,255,255); // 밝은 보라색
+    public Color unknownColor = new Color32(051,051,204,255); // 파란색
+    public Color monsterColor = new Color32(102,255,102,255); // 초록색
     private void Awake()
     {
         Transform child0 = transform.GetChild(0);
@@ -60,7 +68,7 @@ public class DialogueManager : MonoBehaviour
     {
         tmpRect = dialogueTMP.gameObject.GetComponent<RectTransform>();
         thisRect = GetComponent<RectTransform>();
-        StartCoroutine(DisplayDialogues(dialogues_2, 2f));
+        StartCoroutine(DisplayDialogues(dialogues_2, 2, 2f));      //테스트용 실행중
     }
     private void Update()
     {
@@ -73,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         //처음 눌렀을때
         if (!isRepeat)
         {
-            StartCoroutine(DisplayDialogues(dialogues_1, 4.0f));
+            StartCoroutine(DisplayDialogues(dialogues_1, 1, 4.0f));
         }
     }
     private void AdjustWidth()
@@ -89,13 +97,30 @@ public class DialogueManager : MonoBehaviour
 
 
     }
-    IEnumerator DisplayDialogues(string[] dialogues, float _displayTime = displayTime)
+    IEnumerator DisplayDialogues(string[] dialogues, int listNumber,float _displayTime = displayTime)
     {
+        StartCoroutine(SpeakLine_HardCoding(dialogues, listNumber));
         foreach (string dialogue in dialogues)
         {
             dialogueTMP.text = dialogue; // 대사를 UI 텍스트에 표시
-            nameTMP.text = player; // 누가 대사하는지 표시 - 다만 화자에 맞게 변경하는 코드 추가해야함
             textBackground.enabled = true;
+
+            switch (speaker) // 누가 대사하는지 표시 - 다만 화자에 맞게 변경하는 코드 추가해야함
+            {
+                case Speaker.Player:
+                    nameTMP.text = player;
+                    nameTMP.color = playerColor;
+                    break;
+                case Speaker.Unknown:
+                    nameTMP.text = unknown;
+                    nameTMP.color = unknownColor;
+                    break;
+                case Speaker.Monster:
+                    nameTMP.text = monster;
+                    nameTMP.color = monsterColor;
+                    break;
+
+            }
 
             // 대사를 화면에 표시한 후 displayTime 동안 대기
             yield return new WaitForSeconds(displayTime);
@@ -105,6 +130,76 @@ public class DialogueManager : MonoBehaviour
             nameTMP.text = string.Empty;
             textBackground.enabled = false;
         }
+        isSpeakEnd = false;     //대사가 끝난 것을 알림
+    }
+
+    IEnumerator SpeakLine_HardCoding(string[] dialogues, int listNum)
+    {
+        isSpeakEnd = true;
+        switch (listNum)
+        {
+            case 1:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    yield return new WaitForSeconds(displayTime);
+                }
+                break;
+            case 2:
+
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            speaker = Speaker.Player;
+                            break;
+                        case 1:
+                            speaker = Speaker.Unknown;
+                            break;
+                        case 6:
+                            speaker = Speaker.Player;
+                            break;
+                    }
+                    yield return new WaitForSeconds(displayTime);
+                }
+                break;
+            case 3:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+
+                    }
+                    yield return new WaitForSeconds(displayTime);
+                }
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+        }
+
+        Debug.Log("SpeakLine_HardCoding End!!!!___!!");
     }
     void SetDialogues()
     {
