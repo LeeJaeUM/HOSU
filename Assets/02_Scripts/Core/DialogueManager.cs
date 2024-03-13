@@ -6,8 +6,16 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public const float displayTime = 2f; // 각 대사가 화면에 표시될 시간
-    [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] TextMeshProUGUI nameTMP;
+    [SerializeField] TextMeshProUGUI dialogueTMP;
     [SerializeField] Image textBackground;
+
+    RectTransform tmpRect;
+    RectTransform thisRect;
+
+    string player = "주인공 : ";
+    string unknown = "의문의 여성 : ";
+    string monster = "??? : ";
 
     public string[] dialogues_1; // 대사들을 저장한 배열
     public string[] dialogues_2; // 대사들을 저장한 배열
@@ -33,13 +41,31 @@ public class DialogueManager : MonoBehaviour
 
     StartCheck startCheck;
 
+    public Color playerColor = new Color(0.8f, 0.6f, 1f); // 밝은 보라색
+    public Color unknownColor = Color.blue; // 파란색
+    public Color monsterColor = Color.green; // 초록색
     private void Awake()
     {
-        dialogueText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        textBackground = transform.GetChild(0).GetComponent<Image>();
+        Transform child0 = transform.GetChild(0);
+        Transform child1 = transform.GetChild(1);
+        nameTMP = child0.GetComponent<TextMeshProUGUI>();
+        dialogueTMP = child1.GetComponent<TextMeshProUGUI>();
+        textBackground = GetComponent<Image>();
         startCheck = FindAnyObjectByType<StartCheck>();
         startCheck.onCheck += FirstDialogue;
         SetDialogues();
+    }
+
+    private void Start()
+    {
+        tmpRect = dialogueTMP.gameObject.GetComponent<RectTransform>();
+        thisRect = GetComponent<RectTransform>();
+        StartCoroutine(DisplayDialogues(dialogues_2, 2f));
+    }
+    private void Update()
+    {
+        // 텍스트가 변경될 때마다 너비를 조정
+        AdjustWidth();
     }
 
     void FirstDialogue(bool isRepeat)
@@ -50,19 +76,32 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(DisplayDialogues(dialogues_1, 4.0f));
         }
     }
+    private void AdjustWidth()
+    {
+        // 텍스트가 보여지는 길이를 가져옵니다.
+        Vector2 textSize = dialogueTMP.GetPreferredValues();
 
+        // 오브젝트의 너비를 텍스트의 너비에 맞게 조정
+        Vector2 curTextSize = new Vector2(textSize.x + 100, tmpRect.sizeDelta.y);
+        tmpRect.sizeDelta = curTextSize;
+        thisRect.sizeDelta = curTextSize;
+
+
+    }
     IEnumerator DisplayDialogues(string[] dialogues, float _displayTime = displayTime)
     {
         foreach (string dialogue in dialogues)
         {
-            dialogueText.text = dialogue; // 대사를 UI 텍스트에 표시
+            dialogueTMP.text = dialogue; // 대사를 UI 텍스트에 표시
+            nameTMP.text = player; // 누가 대사하는지 표시 - 다만 화자에 맞게 변경하는 코드 추가해야함
             textBackground.enabled = true;
 
             // 대사를 화면에 표시한 후 displayTime 동안 대기
             yield return new WaitForSeconds(displayTime);
 
             // 대기 후에 다음 대사를 표시하기 위해 UI 텍스트를 비움
-            dialogueText.text = string.Empty;
+            dialogueTMP.text = string.Empty;
+            nameTMP.text = string.Empty;
             textBackground.enabled = false;
         }
     }
