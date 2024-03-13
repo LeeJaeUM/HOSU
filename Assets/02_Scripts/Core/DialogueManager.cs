@@ -84,6 +84,7 @@ public class DialogueManager : MonoBehaviour
         // 오브젝트의 너비를 텍스트의 너비에 맞게 조정
         Vector2 curTextSize = new Vector2(textSize.x + 100, tmpRect.sizeDelta.y);
         tmpRect.sizeDelta = curTextSize;
+        curTextSize.x += 50;
         thisRect.sizeDelta = curTextSize;
 
 
