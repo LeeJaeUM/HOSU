@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     public string[] dialogues_5; // 대사들을 저장한 배열
     public string[] dialogues_6; // 대사들을 저장한 배열
     public string[] dialogues_7; // 대사들을 저장한 배열
+    public string[] dialogues_8; // 대사들을 저장한 배열
 
     public string dialogue30s = "빨리 침대 밑으로 숨어야 해!";
     public string dialogueNoBedUse = "뭐지? 아무일도 안 일어났는데?";
@@ -50,9 +51,9 @@ public class DialogueManager : MonoBehaviour
 
     StartCheck startCheck;
 
-    public Color playerColor = new Color32(255,102,255,255); // 밝은 보라색
-    public Color unknownColor = new Color32(051,051,204,255); // 파란색
-    public Color monsterColor = new Color32(102,255,102,255); // 초록색
+    public Color playerColor = new Color32(0, 255, 0, 255); // 초록
+    public Color unknownColor = new Color32(0, 0, 204, 255); // 파란색
+    public Color monsterColor = new Color32(102, 51, 153, 255); // 보라
     private void Awake()
     {
         Transform child0 = transform.GetChild(0);
@@ -70,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         dTMPRect = dialogueTMP.gameObject.GetComponent<RectTransform>();
         nameTMPRect = nameTMP.gameObject.GetComponent<RectTransform>();
         thisRect = GetComponent<RectTransform>();
-        StartCoroutine(DisplayDialogues(dialogues_2, 2, 2f));      //테스트용 실행중
+        StartCoroutine(DisplayDialogues(dialogues_8, 8, 3f));      //테스트용 실행중
     }
     private void Update()
     {
@@ -93,8 +94,10 @@ public class DialogueManager : MonoBehaviour
         Vector2 nameSize = nameTMP.GetPreferredValues();
 
         // 오브젝트의 너비를 텍스트의 너비에 맞게 조정
-        Vector2 curTextSize = new Vector2(textSize.x + 120, dTMPRect.sizeDelta.y);
-        Vector2 curNameSize = new Vector2(nameSize.x + 50, dTMPRect.sizeDelta.y);
+        Vector2 curTextSize = new Vector2(textSize.x + 200, 50);
+        Vector2 curNameSize = new Vector2(nameSize.x + 120, 50);
+        ///Vector2 curTextSize = new Vector2(textSize.x + 120, dTMPRect.sizeDelta.y);
+        //Vector2 curNameSize = new Vector2(nameSize.x + 50, dTMPRect.sizeDelta.y);
         dTMPRect.sizeDelta = curTextSize;
         nameTMPRect.sizeDelta = curNameSize;
         curTextSize.x += 50;
@@ -202,6 +205,27 @@ public class DialogueManager : MonoBehaviour
                 break;
             case 7:
                 break;
+            case 8:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            speaker = Speaker.Player;
+                            break;
+                        case 1:
+                            speaker = Speaker.Monster;
+                            break;
+                        case 2:
+                            speaker = Speaker.Unknown;
+                            break;
+                        case 3:
+                            speaker = Speaker.Player;
+                            break;
+                    }
+                    yield return new WaitForSeconds(displayTime);
+                }
+                break;
         }
 
         Debug.Log("SpeakLine_HardCoding End!!!!___!!");
@@ -248,6 +272,12 @@ public class DialogueManager : MonoBehaviour
         {
             "신고를 받고 출동했습니다. 혹시 무슨 문제가 있습니까?  ",
         };
-
+        dialogues_8 = new string[]
+{
+            "신고를 받고 출동했습니다. 혹시 무슨 문제가 있습니까?  ",
+            "나는 몬스터다 나는 몬스투투투퉅  ",
+            "의문의 여성대사입니다. 테스트 입니테스트 얘 대사가 길면 문제인가??",
+            "다시 나다 주인공 너다라아가  ",
+};
     }
 }
