@@ -1,15 +1,20 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance;
     public enum Speaker
     {
         Player = 0,
         Unknown,
-        Monster
+        Monster,
+        News,
+        Police
     };
     public Speaker speaker = Speaker.Player;
     public bool isSpeakEnd = false;
@@ -22,9 +27,11 @@ public class DialogueManager : MonoBehaviour
     RectTransform nameTMPRect;
     RectTransform thisRect;
 
-    string player = "주인공 : ";
-    string unknown = "의문의 여성 : ";
-    string monster = "??? : ";
+    string player = " 주인공 : ";
+    string unknown = " 의문의 여성 : ";
+    string monster = " ??? : ";
+    string news = " 뉴스 : ";
+    string police = " 경찰 : ";
 
     public string[] dialogues_1; // 대사들을 저장한 배열
     public string[] dialogues_2; // 대사들을 저장한 배열
@@ -46,6 +53,7 @@ public class DialogueManager : MonoBehaviour
     public string dialogueNoCkCloset = "옷장은 확인 했었나?";
     public string dialogueNoCkBedUnder = "그런데, 침대 밑은 확인했었나?";
     public string dialogueSurvive = "이제 사라졌나? 밖에 나가봐야겠다.";
+    public string dialogueStart = " 'E 를 눌러서 일어나자.' ";
 
     public string dialogueMonster = "휴 다행이다.";
 
@@ -53,9 +61,14 @@ public class DialogueManager : MonoBehaviour
 
     public Color playerColor = new Color32(0, 255, 0, 255); // 초록
     public Color unknownColor = new Color32(0, 0, 204, 255); // 파란색
-    public Color monsterColor = new Color32(102, 51, 153, 255); // 보라
+    public Color monsterColor = new Color32(102, 51, 153, 255); // 보라    
+
+    public bool isTutorialDialogueOn = false; //E키 입력 시 튜토리얼용 대사 끄기 위한 bool변수
+
+    PlayerInputActions inputActions;
     private void Awake()
     {
+        inputActions = new PlayerInputActions();
         Transform child0 = transform.GetChild(0);
         Transform child1 = transform.GetChild(1);
         nameTMP = child0.GetComponent<TextMeshProUGUI>();
@@ -63,7 +76,23 @@ public class DialogueManager : MonoBehaviour
         textBackground = GetComponent<Image>();
         startCheck = FindAnyObjectByType<StartCheck>();
         startCheck.onCheck += FirstDialogue;
+        //기본 대사 지정
         SetDialogues();
+    }
+    private void OnEnable()
+    {
+        inputActions.Player.Enable();
+        inputActions.Player.Interact.performed += OnInteract;
+    }
+    private void OnDisable()
+    {
+        inputActions.Player.Interact.performed -= OnInteract;
+        inputActions.Player.Disable();
+    }
+    private void OnInteract(InputAction.CallbackContext obj)    //E키 입력 시 튜토리얼용 대사 끄기 위함
+    {
+       if(isTutorialDialogueOn)
+            HideDialogue();
     }
 
     private void Start()
@@ -71,7 +100,10 @@ public class DialogueManager : MonoBehaviour
         dTMPRect = dialogueTMP.gameObject.GetComponent<RectTransform>();
         nameTMPRect = nameTMP.gameObject.GetComponent<RectTransform>();
         thisRect = GetComponent<RectTransform>();
-        StartCoroutine(DisplayDialogues(dialogues_8, 8, 3f));      //테스트용 실행중
+
+        textBackground.enabled = false; //시작 시 글 뒷배경 안보이게 처리
+
+        StartCoroutine(StartDiaLogue_Co());
     }
     private void Update()
     {
@@ -87,6 +119,43 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(DisplayDialogues(dialogues_1, 1, 4.0f));
         }
     }
+
+
+    IEnumerator StartDiaLogue_Co()
+    {
+        yield return new WaitForSeconds(5f);
+        isTutorialDialogueOn = true;
+        LoadDialogue(dialogueStart, Speaker.Player);
+    }
+    public void LoadDialogue(string dialogue, Speaker _speaker)
+    {
+        dialogueTMP.text = dialogue; // 대사를 UI 텍스트에 표시
+        textBackground.enabled = true;
+
+        SpeakerSelector(_speaker);
+    }
+
+    public void HideDialogue()
+    {
+        // 대기 후에 다음 대사를 표시하기 위해 UI 텍스트를 비움
+        dialogueTMP.text = string.Empty;
+        nameTMP.text = string.Empty;
+        textBackground.enabled = false;
+        isTutorialDialogueOn = false;
+    }
+
+    IEnumerator Dia2_Co()
+    {
+        yield return new WaitForSeconds(2);
+        while (isSpeakEnd)      //대사 중일때 루프
+        {
+            yield return null;
+        }
+        //2번째 대사 종료 후 실행
+        GameManager.Inst.isDia2End = true;
+        GameManager.Inst.onDia2End?.Invoke();
+    }
+
     private void AdjustWidth()
     {
         // 텍스트가 보여지는 길이를 가져옵니다.
@@ -107,29 +176,14 @@ public class DialogueManager : MonoBehaviour
     }
     IEnumerator DisplayDialogues(string[] dialogues, int listNumber,float _displayTime = displayTime)
     {
+        isSpeakEnd = true;
         StartCoroutine(SpeakLine_HardCoding(dialogues, listNumber));
         foreach (string dialogue in dialogues)
         {
             dialogueTMP.text = dialogue; // 대사를 UI 텍스트에 표시
             textBackground.enabled = true;
 
-            switch (speaker) // 누가 대사하는지 표시 - 다만 화자에 맞게 변경하는 코드 추가해야함
-            {
-                case Speaker.Player:
-                    nameTMP.text = player;
-                    nameTMP.color = playerColor;
-                    break;
-                case Speaker.Unknown:
-                    nameTMP.text = unknown;
-                    nameTMP.color = unknownColor;
-                    break;
-                case Speaker.Monster:
-                    nameTMP.text = monster;
-                    nameTMP.color = monsterColor;
-                    break;
-
-            }
-
+            SpeakerSelector(speaker);
             // 대사를 화면에 표시한 후 displayTime 동안 대기
             yield return new WaitForSeconds(displayTime);
 
@@ -141,19 +195,46 @@ public class DialogueManager : MonoBehaviour
         isSpeakEnd = false;     //대사가 끝난 것을 알림
     }
 
+    void SpeakerSelector(Speaker speaker)
+    {
+
+        switch (speaker) // 누가 대사하는지 표시 - 다만 화자에 맞게 변경하는 코드 추가해야함
+        {
+            case Speaker.Player:
+                nameTMP.text = player;
+                nameTMP.color = playerColor;
+                break;
+            case Speaker.Unknown:
+                nameTMP.text = unknown;
+                nameTMP.color = unknownColor;
+                break;
+            case Speaker.Monster:
+                nameTMP.text = monster;
+                nameTMP.color = monsterColor;
+                break;
+            case Speaker.News:
+                nameTMP.text = news;
+                nameTMP.color = Color.white;
+                break;
+            case Speaker.Police:
+                nameTMP.text = police;
+                nameTMP.color = Color.white;
+                break;
+        }
+    }
+
     IEnumerator SpeakLine_HardCoding(string[] dialogues, int listNum)
     {
-        isSpeakEnd = true;
         switch (listNum)
         {
             case 1:
                 for (int i = 0; i < dialogues.Length; i++)
                 {
+                    speaker = Speaker.Player;
                     yield return new WaitForSeconds(displayTime);
                 }
                 break;
             case 2:
-
                 for (int i = 0; i < dialogues.Length; i++)
                 {
                     switch (i)
@@ -174,36 +255,37 @@ public class DialogueManager : MonoBehaviour
             case 3:
                 for (int i = 0; i < dialogues.Length; i++)
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                        case 5:
-                            break;
-                        case 6:
-                            break;
-                        case 7:
-                            break;
-
-                    }
+                    speaker = Speaker.Unknown;
                     yield return new WaitForSeconds(displayTime);
                 }
                 break;
             case 4:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    speaker = Speaker.Player;
+                    yield return new WaitForSeconds(displayTime);
+                }
                 break;
             case 5:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    speaker = Speaker.News;
+                    yield return new WaitForSeconds(displayTime);
+                }
                 break;
             case 6:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    speaker = Speaker.Player;
+                    yield return new WaitForSeconds(displayTime);
+                }
                 break;
             case 7:
+                for (int i = 0; i < dialogues.Length; i++)
+                {
+                    speaker = Speaker.Police;
+                    yield return new WaitForSeconds(displayTime);
+                }
                 break;
             case 8:
                 for (int i = 0; i < dialogues.Length; i++)
@@ -234,7 +316,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogues_1 = new string[]
         {
-            "이 늦은 시간에 누가 이렇게 전화를 하지?",
+            "...",
+            "이 늦은 시간에 누가 이렇게 전화를 하지?"
         };       
         dialogues_2 = new string[]
         {
@@ -249,7 +332,8 @@ public class DialogueManager : MonoBehaviour
         };
         dialogues_3 = new string[]
         {
-            "여보세요? 너 괜찮아?",
+            "여보세요?", 
+            "너 괜찮아?"
         };
         dialogues_4 = new string[]
         {
@@ -273,11 +357,45 @@ public class DialogueManager : MonoBehaviour
             "신고를 받고 출동했습니다. 혹시 무슨 문제가 있습니까?  ",
         };
         dialogues_8 = new string[]
-{
+        {
             "신고를 받고 출동했습니다. 혹시 무슨 문제가 있습니까?  ",
             "나는 몬스터다 나는 몬스투투투퉅  ",
             "의문의 여성대사입니다. 테스트 입니테스트 얘 대사가 길면 문제인가??",
             "다시 나다 주인공 너다라아가  ",
-};
+        };
     }
+
+    public void SpeakDialogue(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                StartCoroutine(DisplayDialogues(dialogues_1, 1, 5));
+                break;
+            case 2:
+                StartCoroutine(DisplayDialogues(dialogues_2, 2));
+                StartCoroutine(Dia2_Co());
+                break;
+            case 3:
+                StartCoroutine(DisplayDialogues(dialogues_3, 3));
+                break;
+            case 4:
+                StartCoroutine(DisplayDialogues(dialogues_4, 4));
+                break;
+            case 5:
+                StartCoroutine(DisplayDialogues(dialogues_5, 5));
+                break;
+            case 6:
+                StartCoroutine(DisplayDialogues(dialogues_6, 6));
+                break;
+            case 7:
+                StartCoroutine(DisplayDialogues(dialogues_7, 7));
+                break;
+            case 8:
+                StartCoroutine(DisplayDialogues(dialogues_8, 8));
+                break;
+        }
+    }
+
+
 }

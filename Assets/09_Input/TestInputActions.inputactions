@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Test8",
+                    "type": "Button",
+                    "id": "bd05bf76-7ec7-41a1-9e60-4c4dd1b75e76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -144,6 +153,17 @@
                     "processors": "",
                     "groups": "Test",
                     "action": "Test7",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e96ef261-8c5d-47a8-aaaa-0ed9c9d048b0",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Test",
+                    "action": "Test8",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

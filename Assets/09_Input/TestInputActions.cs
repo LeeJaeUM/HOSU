@@ -89,6 +89,15 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Test8"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd05bf76-7ec7-41a1-9e60-4c4dd1b75e76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Test7"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e96ef261-8c5d-47a8-aaaa-0ed9c9d048b0"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Test"",
+                    ""action"": ""Test8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -200,6 +220,7 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
         m_Test_Test5 = m_Test.FindAction("Test5", throwIfNotFound: true);
         m_Test_Test6 = m_Test.FindAction("Test6", throwIfNotFound: true);
         m_Test_Test7 = m_Test.FindAction("Test7", throwIfNotFound: true);
+        m_Test_Test8 = m_Test.FindAction("Test8", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +289,7 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Test_Test5;
     private readonly InputAction m_Test_Test6;
     private readonly InputAction m_Test_Test7;
+    private readonly InputAction m_Test_Test8;
     public struct TestActions
     {
         private @TestInputActions m_Wrapper;
@@ -279,6 +301,7 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
         public InputAction @Test5 => m_Wrapper.m_Test_Test5;
         public InputAction @Test6 => m_Wrapper.m_Test_Test6;
         public InputAction @Test7 => m_Wrapper.m_Test_Test7;
+        public InputAction @Test8 => m_Wrapper.m_Test_Test8;
         public InputActionMap Get() { return m_Wrapper.m_Test; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -309,6 +332,9 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
             @Test7.started += instance.OnTest7;
             @Test7.performed += instance.OnTest7;
             @Test7.canceled += instance.OnTest7;
+            @Test8.started += instance.OnTest8;
+            @Test8.performed += instance.OnTest8;
+            @Test8.canceled += instance.OnTest8;
         }
 
         private void UnregisterCallbacks(ITestActions instance)
@@ -334,6 +360,9 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
             @Test7.started -= instance.OnTest7;
             @Test7.performed -= instance.OnTest7;
             @Test7.canceled -= instance.OnTest7;
+            @Test8.started -= instance.OnTest8;
+            @Test8.performed -= instance.OnTest8;
+            @Test8.canceled -= instance.OnTest8;
         }
 
         public void RemoveCallbacks(ITestActions instance)
@@ -369,5 +398,6 @@ public partial class @TestInputActions: IInputActionCollection2, IDisposable
         void OnTest5(InputAction.CallbackContext context);
         void OnTest6(InputAction.CallbackContext context);
         void OnTest7(InputAction.CallbackContext context);
+        void OnTest8(InputAction.CallbackContext context);
     }
 }
