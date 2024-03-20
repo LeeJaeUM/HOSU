@@ -28,8 +28,10 @@ public class StartSceneInteract : MonoBehaviour
     }
     IEnumerator Start_Co()
     {
+        yield return new WaitForSeconds(4);
         while (temp < endTime)
         {
+
             float normalizedTime = temp / endTime;
             testno = normalizedTime;
             temp += Time.deltaTime;

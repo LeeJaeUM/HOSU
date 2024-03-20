@@ -123,7 +123,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator StartDiaLogue_Co()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         isTutorialDialogueOn = true;
         LoadDialogue(dialogueStart, Speaker.Player);
     }

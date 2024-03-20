@@ -29,7 +29,7 @@ public class FTMP : MonoBehaviour
     public Color textColor;
     IEnumerator Start_Co()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
         while (temp < endTime)
         {
             float normalizedTime = temp / endTime ;
