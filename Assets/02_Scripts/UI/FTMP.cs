@@ -9,7 +9,6 @@ public class FTMP : MonoBehaviour
     public Image background;
     public TextMeshProUGUI tmp1;
     public TextMeshProUGUI tmp2;
-    public TextMeshProUGUI tmp3;
 
     public float temp = 0.1f;
     public float endTime = 2;
@@ -20,7 +19,6 @@ public class FTMP : MonoBehaviour
         background = transform.GetChild(0).GetComponent<Image>();
         tmp1 = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         tmp2 = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        tmp3 = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -48,7 +46,6 @@ public class FTMP : MonoBehaviour
             textColor.a = Mathf.Lerp(1f, 0f, normalizedTime);
             tmp1.color = textColor;
             tmp2.color = textColor;
-            tmp3.color = textColor;
             yield return null;
         }
     }
