@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 public class Test_Dialogue : TestBase
 {
     public DialogueManager dialogueManager;
+    
 
     protected override void OnTest1(InputAction.CallbackContext context)
     {
-        dialogueManager.SpeakDialogue(1);
+        GameManager.Inst.Dia2End();
     }
     protected override void OnTest2(InputAction.CallbackContext context)
     {
