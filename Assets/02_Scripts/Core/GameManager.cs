@@ -51,19 +51,29 @@ public class GameManager : MonoBehaviour
 
     public Action onDia2End;        //DialogueManager 에서 액션 발송 후 여기서 실행
 
-    public Light[] lights = new Light[3]; 
-
+    public Light[] lights = new Light[3];
+    float[] lightIntensitys = new float[3]; //기존 전등의 세기 저장용
     public void Dia2End()
     {
+        for(int i= 0; i < lightIntensitys.Length; i++)
+        {
+            lightIntensitys[i] = lights[i].intensity;
+        }
         StartCoroutine(Dia2EndSpark_Co());
     }
 
     IEnumerator Dia2EndSpark_Co()
     {
+        foreach(Light light in lights)
+        {
+            light.intensity = 0.5f;
+        }
         LightOff();
         while (isLose)
         {
+            Debug.Log("Te");
             yield return new WaitForSeconds(lateTime);
+            Debug.Log("st");
             int a = Random.Range(1, 4);
             for(int i= 0; i < a; i++)
             {

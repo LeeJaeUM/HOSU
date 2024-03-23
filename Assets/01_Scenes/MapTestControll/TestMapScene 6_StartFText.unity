@@ -7601,8 +7601,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.8
-  m_Range: 7.75
-  m_SpotAngle: 50.7
+  m_Range: 6
+  m_SpotAngle: 66.08489
   m_InnerSpotAngle: 18.627634
   m_CookieSize: 10
   m_Shadows:
@@ -25568,13 +25568,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 324912062}
     m_Modifications:
+    - target: {fileID: 526676626306549841, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_Size.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702584537782282102, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2288504866698265034, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
       propertyPath: m_Name
       value: Window_Living
       objectReference: {fileID: 0}
     - target: {fileID: 6442187104595616878, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4899999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442187104595616878, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
       propertyPath: m_Size.z
-      value: 1.83
+      value: 0.24418885
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442187104595616878, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_Center.x
+      value: -0.6836577
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442187104595616878, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_Center.y
+      value: 0.030194046
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442187104595616878, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_Center.z
+      value: 0.059117757
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442187104595616878, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6687594851016835132, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25615,6 +25643,10 @@ PrefabInstance:
     - target: {fileID: 6687594851016835132, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821946346880873099, guid: 69255f783a42a2d42a9714dbbaa72ce0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43034,7 +43066,7 @@ PrefabInstance:
       objectReference: {fileID: 614733580}
     - target: {fileID: 2545056928019407144, guid: 1b4f192dd2eb6e243b0b52f4205db228, type: 3}
       propertyPath: sparkTime
-      value: 0.35
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2545056928019407144, guid: 1b4f192dd2eb6e243b0b52f4205db228, type: 3}
       propertyPath: light_Front
@@ -43306,6 +43338,10 @@ PrefabInstance:
     - target: {fileID: 3162685156025500500, guid: 02e9cd3a461a01b4999c91e774dae86b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477824394569562232, guid: 02e9cd3a461a01b4999c91e774dae86b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6764390737067872679, guid: 02e9cd3a461a01b4999c91e774dae86b, type: 3}
       propertyPath: m_Controller

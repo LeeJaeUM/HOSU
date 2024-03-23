@@ -71,6 +71,7 @@ public class InteractAction : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactDistance))
         {
             // Ray에 부딪힌 물체가 IInteract 인터페이스를 가지고 있는지 확인
+            Debug.Log(hit.collider.name);
             interactable = hit.collider.GetComponent<IInteractable>();
 
         }
