@@ -91,7 +91,7 @@ public class AudioManager : MonoBehaviour
             channelIndex = loopIndex;
             sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
             sfxPlayers[loopIndex].Play();
-           // StartCoroutine(DirAudio(loopIndex));
+           StartCoroutine(DirAudio(loopIndex));
             break;
         }
     }

@@ -10861,6 +10861,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6d64a471a6ea74ebeba48aa93e4d7f, type: 3}
+--- !u!4 &530149262 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7991149349949949902, guid: 1a6d64a471a6ea74ebeba48aa93e4d7f, type: 3}
+  m_PrefabInstance: {fileID: 530149261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &531230517
 GameObject:
   m_ObjectHideFlags: 0
@@ -36739,7 +36744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052b1a2c28a39eb4db4d7227493c70da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 1863256025}
+  audioManager: {fileID: 1863256025}
 --- !u!4 &1818895672
 Transform:
   m_ObjectHideFlags: 0
@@ -43068,6 +43073,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4467618161073202219, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
+      propertyPath: listenerPosition
+      value: 
+      objectReference: {fileID: 530149262}
+    - target: {fileID: 4467618161073202219, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
+      propertyPath: soundSourcePosition.Array.data[0]
+      value: 
+      objectReference: {fileID: 5172462016526000176}
+    - target: {fileID: 4467618161073202219, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
+      propertyPath: soundSourcePosition.Array.data[1]
+      value: 
+      objectReference: {fileID: 5172462016526000176}
+    - target: {fileID: 4467618161073202219, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
+      propertyPath: soundSourcePosition.Array.data[2]
+      value: 
+      objectReference: {fileID: 530149262}
+    - target: {fileID: 4467618161073202219, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
+      propertyPath: soundSourcePosition.Array.data[3]
+      value: 
+      objectReference: {fileID: 1700100629}
+    - target: {fileID: 4467618161073202219, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
+      propertyPath: soundSourcePosition.Array.data[4]
+      value: 
+      objectReference: {fileID: 1700100629}
     - target: {fileID: 4974619026194400439, guid: 62f5c733f0c7c364e8fc581d1c09eff8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1387411
