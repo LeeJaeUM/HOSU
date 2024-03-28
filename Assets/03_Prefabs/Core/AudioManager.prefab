@@ -54,3 +54,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14fcd0b095e83e64ea4b187a1ebb160c, type: 3}
   sfxVolume: 0.7
   channels: 8
+  listenerPosition: {fileID: 0}
+  soundSourcePosition:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxVolumeDistance: 15

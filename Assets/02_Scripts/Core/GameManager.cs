@@ -25,6 +25,17 @@ public class GameManager : MonoBehaviour
         lights = GetComponentsInChildren<Light>();
 
     }
+
+    InteractAction interactAction;
+    public InteractAction InteractAction
+    {
+        get
+        {
+            if (interactAction == null)
+                interactAction = FindAnyObjectByType<InteractAction>();
+            return interactAction;
+        }
+    }
  
 
     [Header("상호작용 가능한지 판단")]
@@ -71,14 +82,11 @@ public class GameManager : MonoBehaviour
         LightOff();
         while (isLose)
         {
-            Debug.Log("Te");
             yield return new WaitForSeconds(lateTime);
-            Debug.Log("st");
             int a = Random.Range(1, 4);
             for(int i= 0; i < a; i++)
             {
                 LightOn();
-                Debug.Log("dd");
                 int b = Random.Range(4, 20);
                 float bb = b * 0.01f;
                 yield return new WaitForSeconds(bb);

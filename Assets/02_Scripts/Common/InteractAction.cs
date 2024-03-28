@@ -14,6 +14,7 @@ public class InteractAction : MonoBehaviour
     bool isFlashOn = false;
 
     [SerializeField] IInteractable interactable;
+    public Action onInteracAble;
 
     private void Awake()
     {
@@ -73,6 +74,8 @@ public class InteractAction : MonoBehaviour
             // Ray에 부딪힌 물체가 IInteract 인터페이스를 가지고 있는지 확인
             Debug.Log(hit.collider.name);
             interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+                onInteracAble?.Invoke();
 
         }
     }
