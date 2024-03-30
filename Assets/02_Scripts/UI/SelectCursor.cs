@@ -28,7 +28,8 @@ public class SelectCursor : MonoBehaviour
             float cosTime = Mathf.Cos((Time.time % animationDuration) / animationDuration * Mathf.PI * timePeriod); //시간을 0에서 1 사이로 정규화하고 코사인 함수에 적용
             //imgColor.a = Mathf.Lerp(1f, 0f, (cosTime + 1) / 2); //코사인 값을 0에서 1 사이로 다시 매핑하여 투명도를 설정
             float finalZeroOne = Mathf.Lerp(1f, 0f, (cosTime + 1) / 2); //코사인 값을 0에서 1 사이로 다시 매핑하여 투명도를 설정
-            imgColor.a = finalZeroOne * 0.2f;
+            imgColor.a = finalZeroOne;
+            //imgColor.a = finalZeroOne * 0.2f;
             img1.color = imgColor;
         }
     }

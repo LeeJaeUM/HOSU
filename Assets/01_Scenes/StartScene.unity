@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 161229289}
   - component: {fileID: 161229288}
   m_Layer: 0
-  m_Name: Video Player
+  m_Name: Background Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1735,7 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10416256de5fe54f8a2e6bad3504972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: TestMapScene 6_StartFText
+  nextSceneName: Test08_StateMachine
   title: {fileID: 1923762832}
   temp: 0.1
   endTime: 4

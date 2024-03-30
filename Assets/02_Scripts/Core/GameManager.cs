@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         foreach(Light light in lights)
         {
-            light.intensity = 0.5f;
+            light.intensity = 0.9f;
         }
         LightOff();
         while (isLose)
