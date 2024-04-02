@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     };
     public Speaker speaker = Speaker.Player;
     public bool isSpeakEnd = false;
-    public const float displayTime = 2f; // °¢ ´ë»ç°¡ È­¸é¿¡ Ç¥½ÃµÉ ½Ã°£
+    public const float displayTime = 2f; // ê° ëŒ€ì‚¬ê°€ í™”ë©´ì— í‘œì‹œë  ì‹œê°„
     [SerializeField] TextMeshProUGUI nameTMP;
     [SerializeField] TextMeshProUGUI dialogueTMP;
     [SerializeField] Image textBackground;
@@ -27,43 +27,41 @@ public class DialogueManager : MonoBehaviour
     RectTransform nameTMPRect;
     RectTransform thisRect;
 
-    string player = " ÁÖÀÎ°ø : ";
-    string unknown = " ÀÇ¹®ÀÇ ¿©¼º : ";
+    string player = " ì£¼ì¸ê³µ : ";
+    string unknown = " ì˜ë¬¸ì˜ ì—¬ì„± : ";
     string monster = " ??? : ";
-    string news = " ´º½º : ";
-    string police = " °æÂû : ";
+    string news = " ë‰´ìŠ¤ : ";
+    string police = " ê²½ì°° : ";
 
-    public string[] dialogues_1; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_2; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_3; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_4; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_5; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_6; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_7; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
-    public string[] dialogues_8; // ´ë»çµéÀ» ÀúÀåÇÑ ¹è¿­
+    public string[] dialogues_1; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_2; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_3; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_4; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_5; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_6; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_7; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
+    public string[] dialogues_8; // ëŒ€ì‚¬ë“¤ì„ ì €ì¥í•œ ë°°ì—´
 
-    public string dialogue30s = "»¡¸® Ä§´ë ¹ØÀ¸·Î ¼û¾î¾ß ÇØ!";
-    public string dialogueNoBedUse = "¹¹Áö? ¾Æ¹«ÀÏµµ ¾È ÀÏ¾î³µ´Âµ¥?";
-    public string dialogueNoCkDoor_front = "³»°¡ Çö°ü¹®À» Àá°¬´ø°¡?";
-    public string dialogueNoCkDoor_living = "³»°¡ °Å½Ç Ã¢¹®À» Àá°¬´ø°¡?";
-    public string dialogueNoCkDoor_Bed = "³»°¡ °Å½Ç ¹®À» Àá°¬´ø°¡?";
-    public string dialogueNoCkDoor_toilet = "È­Àå½ÇÀº È®ÀÎ Çß¾ú³ª? ";
-    public string dialogueNoCkWindow_living = "³»°¡ °Å½Ç Ã¢¹®À» ¸·¾Ò¾ú³ª?";
-    public string dialogueNoCkWindow_Bed = "³»°¡ Ä§½Ç Ã¢¹®À» ¸·¾Ò¾ú³ª?";
-    public string dialogueNoCkCloset = "¿ÊÀåÀº È®ÀÎ Çß¾ú³ª?";
-    public string dialogueNoCkBedUnder = "±×·±µ¥, Ä§´ë ¹ØÀº È®ÀÎÇß¾ú³ª?";
-    public string dialogueSurvive = "ÀÌÁ¦ »ç¶óÁ³³ª? ¹Û¿¡ ³ª°¡ºÁ¾ß°Ú´Ù.";
-    public string dialogueStart = " 'E ¸¦ ´­·¯¼­ ÀÏ¾î³ªÀÚ.' ";
+    public string dialogue30s = "ë¹¨ë¦¬ ì¹¨ëŒ€ ë°‘ìœ¼ë¡œ ìˆ¨ì–´ì•¼ í•´!";
+    public string dialogueNoBedUse = "ë­ì§€? ì•„ë¬´ì¼ë„ ì•ˆ ì¼ì–´ë‚¬ëŠ”ë°?";
+    public string dialogueNoCkDoor_front = "ë‚´ê°€ í˜„ê´€ë¬¸ì„ ì ê°”ë˜ê°€?";
+    public string dialogueNoCkDoor_living = "ë‚´ê°€ ê±°ì‹¤ ì°½ë¬¸ì„ ì ê°”ë˜ê°€?";
+    public string dialogueNoCkDoor_Bed = "ë‚´ê°€ ê±°ì‹¤ ë¬¸ì„ ì ê°”ë˜ê°€?";
+    public string dialogueNoCkDoor_toilet = "í™”ì¥ì‹¤ì€ í™•ì¸ í–ˆì—ˆë‚˜? ";
+    public string dialogueNoCkWindow_living = "ë‚´ê°€ ê±°ì‹¤ ì°½ë¬¸ì„ ë§‰ì•˜ì—ˆë‚˜?";
+    public string dialogueNoCkWindow_Bed = "ë‚´ê°€ ì¹¨ì‹¤ ì°½ë¬¸ì„ ë§‰ì•˜ì—ˆë‚˜?";
+    public string dialogueNoCkCloset = "ì˜·ì¥ì€ í™•ì¸ í–ˆì—ˆë‚˜?";
+    public string dialogueNoCkBedUnder = "ê·¸ëŸ°ë°, ì¹¨ëŒ€ ë°‘ì€ í™•ì¸í–ˆì—ˆë‚˜?";
+    public string dialogueSurvive = "ì´ì œ ì‚¬ë¼ì¡Œë‚˜? ë°–ì— ë‚˜ê°€ë´ì•¼ê² ë‹¤.";
+    public string dialogueTutorial = " 'í•¸ë“œí°ì„ í™•ì¸í•˜ì (E ë¥¼ ëˆŒëŸ¬ì„œ ê¸°ìƒ)' ";
 
-    public string dialogueMonster = "ÈŞ ´ÙÇàÀÌ´Ù.";
+    public string dialogueMonster = "íœ´ ë‹¤í–‰ì´ë‹¤.";
 
-    StartCheck startCheck;
+    public Color playerColor = new Color32(0, 255, 0, 255); // ì´ˆë¡
+    public Color unknownColor = new Color32(0, 0, 204, 255); // íŒŒë€ìƒ‰
+    public Color monsterColor = new Color32(102, 51, 153, 255); // ë³´ë¼    
 
-    public Color playerColor = new Color32(0, 255, 0, 255); // ÃÊ·Ï
-    public Color unknownColor = new Color32(0, 0, 204, 255); // ÆÄ¶õ»ö
-    public Color monsterColor = new Color32(102, 51, 153, 255); // º¸¶ó    
-
-    public bool isTutorialDialogueOn = false; //EÅ° ÀÔ·Â ½Ã Æ©Åä¸®¾ó¿ë ´ë»ç ²ô±â À§ÇÑ boolº¯¼ö
+    public bool isTutorialDialogueOn = false; //Eí‚¤ ì…ë ¥ ì‹œ íŠœí† ë¦¬ì–¼ìš© ëŒ€ì‚¬ ë„ê¸° ìœ„í•œ boolë³€ìˆ˜
 
     PlayerInputActions inputActions;
     private void Awake()
@@ -74,9 +72,7 @@ public class DialogueManager : MonoBehaviour
         nameTMP = child0.GetComponent<TextMeshProUGUI>();
         dialogueTMP = child1.GetComponent<TextMeshProUGUI>();
         textBackground = GetComponent<Image>();
-        startCheck = FindAnyObjectByType<StartCheck>();
-        startCheck.onCheck += FirstDialogue;
-        //±âº» ´ë»ç ÁöÁ¤
+        //ê¸°ë³¸ ëŒ€ì‚¬ ì§€ì •
         SetDialogues();
     }
     private void OnEnable()
@@ -89,10 +85,10 @@ public class DialogueManager : MonoBehaviour
         inputActions.Player.Interact.performed -= OnInteract;
         inputActions.Player.Disable();
     }
-    private void OnInteract(InputAction.CallbackContext obj)    //EÅ° ÀÔ·Â ½Ã Æ©Åä¸®¾ó¿ë ´ë»ç ²ô±â À§ÇÔ
+    private void OnInteract(InputAction.CallbackContext obj)    //Eí‚¤ ì…ë ¥ ì‹œ íŠœí† ë¦¬ì–¼ìš© ëŒ€ì‚¬ ë„ê¸° ìœ„í•¨
     {
        if(isTutorialDialogueOn)
-            HideDialogue();
+            HideTutorial_Dialogue();
     }
 
     private void Start()
@@ -101,43 +97,36 @@ public class DialogueManager : MonoBehaviour
         nameTMPRect = nameTMP.gameObject.GetComponent<RectTransform>();
         thisRect = GetComponent<RectTransform>();
 
-        textBackground.enabled = false; //½ÃÀÛ ½Ã ±Û µŞ¹è°æ ¾Èº¸ÀÌ°Ô Ã³¸®
+        textBackground.enabled = false; //ì‹œì‘ ì‹œ ê¸€ ë’·ë°°ê²½ ì•ˆë³´ì´ê²Œ ì²˜ë¦¬
 
-        StartCoroutine(StartDiaLogue_Co());
+         StartCoroutine(StartDiaLogue_Co());
     }
     private void Update()
     {
-        // ÅØ½ºÆ®°¡ º¯°æµÉ ¶§¸¶´Ù ³Êºñ¸¦ Á¶Á¤
+        // í…ìŠ¤íŠ¸ê°€ ë³€ê²½ë  ë•Œë§ˆë‹¤ ë„ˆë¹„ë¥¼ ì¡°ì •
         AdjustWidth();
-    }
-
-    void FirstDialogue(bool isRepeat)
-    {
-        //Ã³À½ ´­·¶À»¶§
-        if (!isRepeat)
-        {
-            StartCoroutine(DisplayDialogues(dialogues_1, 1, 4.0f));
-        }
     }
 
 
     IEnumerator StartDiaLogue_Co()
     {
         yield return new WaitForSeconds(10f);
+        SpeakDialogue(1);
+        yield return new WaitForSeconds(6f);
         isTutorialDialogueOn = true;
-        LoadDialogue(dialogueStart, Speaker.Player);
+        LoadTutorial_Dialogue(dialogueTutorial);
     }
-    public void LoadDialogue(string dialogue, Speaker _speaker)
+    public void LoadTutorial_Dialogue(string dialogue)
     {
-        dialogueTMP.text = dialogue; // ´ë»ç¸¦ UI ÅØ½ºÆ®¿¡ Ç¥½Ã
+        dialogueTMP.text = dialogue; // ï¿½ï¿½ç¸¦ UI ï¿½Ø½ï¿½Æ®ï¿½ï¿½ Ç¥ï¿½ï¿½
         textBackground.enabled = true;
 
-        SpeakerSelector(_speaker);
+        SpeakerSelector(Speaker.Player);
     }
 
-    public void HideDialogue()
+        public void HideTutorial_Dialogue()
     {
-        // ´ë±â ÈÄ¿¡ ´ÙÀ½ ´ë»ç¸¦ Ç¥½ÃÇÏ±â À§ÇØ UI ÅØ½ºÆ®¸¦ ºñ¿ò
+        // ëŒ€ê¸° í›„ì— ë‹¤ìŒ ëŒ€ì‚¬ë¥¼ í‘œì‹œí•˜ê¸° ìœ„í•´ UI í…ìŠ¤íŠ¸ë¥¼ ë¹„ì›€
         dialogueTMP.text = string.Empty;
         nameTMP.text = string.Empty;
         textBackground.enabled = false;
@@ -147,22 +136,22 @@ public class DialogueManager : MonoBehaviour
     IEnumerator Dia2_Co()
     {
         yield return new WaitForSeconds(2);
-        while (isSpeakEnd)      //´ë»ç ÁßÀÏ¶§ ·çÇÁ
+        while (isSpeakEnd)      //ëŒ€ì‚¬ ì¤‘ì¼ë•Œ ë£¨í”„
         {
             yield return null;
         }
-        //2¹øÂ° ´ë»ç Á¾·á ÈÄ ½ÇÇà
+        //2ë²ˆì§¸ ëŒ€ì‚¬ ì¢…ë£Œ í›„ ì‹¤í–‰
         GameManager.Inst.isDia2End = true;
         GameManager.Inst.onDia2End?.Invoke();
     }
 
     private void AdjustWidth()
     {
-        // ÅØ½ºÆ®°¡ º¸¿©Áö´Â ±æÀÌ¸¦ °¡Á®¿É´Ï´Ù.
+        // í…ìŠ¤íŠ¸ê°€ ë³´ì—¬ì§€ëŠ” ê¸¸ì´ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
         Vector2 textSize = dialogueTMP.GetPreferredValues();
         Vector2 nameSize = nameTMP.GetPreferredValues();
 
-        // ¿ÀºêÁ§Æ®ÀÇ ³Êºñ¸¦ ÅØ½ºÆ®ÀÇ ³Êºñ¿¡ ¸Â°Ô Á¶Á¤
+        // ì˜¤ë¸Œì íŠ¸ì˜ ë„ˆë¹„ë¥¼ í…ìŠ¤íŠ¸ì˜ ë„ˆë¹„ì— ë§ê²Œ ì¡°ì •
         Vector2 curTextSize = new Vector2(textSize.x + 200, 50);
         Vector2 curNameSize = new Vector2(nameSize.x + 120, 50);
         ///Vector2 curTextSize = new Vector2(textSize.x + 120, dTMPRect.sizeDelta.y);
@@ -180,25 +169,25 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(SpeakLine_HardCoding(dialogues, listNumber));
         foreach (string dialogue in dialogues)
         {
-            dialogueTMP.text = dialogue; // ´ë»ç¸¦ UI ÅØ½ºÆ®¿¡ Ç¥½Ã
+            dialogueTMP.text = dialogue; // ëŒ€ì‚¬ë¥¼ UI í…ìŠ¤íŠ¸ì— í‘œì‹œ
             textBackground.enabled = true;
 
             SpeakerSelector(speaker);
-            // ´ë»ç¸¦ È­¸é¿¡ Ç¥½ÃÇÑ ÈÄ displayTime µ¿¾È ´ë±â
+            // ëŒ€ì‚¬ë¥¼ í™”ë©´ì— í‘œì‹œí•œ í›„ displayTime ë™ì•ˆ ëŒ€ê¸°
             yield return new WaitForSeconds(displayTime);
 
-            // ´ë±â ÈÄ¿¡ ´ÙÀ½ ´ë»ç¸¦ Ç¥½ÃÇÏ±â À§ÇØ UI ÅØ½ºÆ®¸¦ ºñ¿ò
+            // ëŒ€ê¸° í›„ì— ë‹¤ìŒ ëŒ€ì‚¬ë¥¼ í‘œì‹œí•˜ê¸° ìœ„í•´ UI í…ìŠ¤íŠ¸ë¥¼ ë¹„ì›€
             dialogueTMP.text = string.Empty;
             nameTMP.text = string.Empty;
             textBackground.enabled = false;
         }
-        isSpeakEnd = false;     //´ë»ç°¡ ³¡³­ °ÍÀ» ¾Ë¸²
+        isSpeakEnd = false;     //ëŒ€ì‚¬ê°€ ëë‚œ ê²ƒì„ ì•Œë¦¼
     }
 
     void SpeakerSelector(Speaker speaker)
     {
 
-        switch (speaker) // ´©°¡ ´ë»çÇÏ´ÂÁö Ç¥½Ã - ´Ù¸¸ È­ÀÚ¿¡ ¸Â°Ô º¯°æÇÏ´Â ÄÚµå Ãß°¡ÇØ¾ßÇÔ
+        switch (speaker) // ëˆ„ê°€ ëŒ€ì‚¬í•˜ëŠ”ì§€ í‘œì‹œ - ë‹¤ë§Œ í™”ìì— ë§ê²Œ ë³€ê²½í•˜ëŠ” ì½”ë“œ ì¶”ê°€í•´ì•¼í•¨
         {
             case Speaker.Player:
                 nameTMP.text = player;
@@ -317,51 +306,51 @@ public class DialogueManager : MonoBehaviour
         dialogues_1 = new string[]
         {
             "...",
-            "ÀÌ ´ÊÀº ½Ã°£¿¡ ´©°¡ ÀÌ·¸°Ô ÀüÈ­¸¦ ÇÏÁö?"
+            "ì´ ëŠ¦ì€ ì‹œê°„ì— ëˆ„ê°€ ì´ë ‡ê²Œ ì „í™”ë¥¼ í•˜ì§€?"
         };       
         dialogues_2 = new string[]
         {
-            "¿©º¸¼¼¿ä?",
-            "¿©º¸¼¼¿ä? ³Ê ±¦Âú¾Æ? ÈŞ ´ÙÇàÀÌ´Ù.",
-            "Áö±İ ½Ã°£ÀÌ ¾ø¾î! ´©±º°¡ ³Ê¸¦ Á×ÀÌ·Á°íÇØ! ",
-            "³»°¡ ÀÚ¼¼ÇÑ°Ç ³ªÁß¿¡ ´Ù ¼³¸íÇÒ°Ô! Áı¿¡¼­ ¹öÆ¼°í ÀÖ¾î!",
-            "»ïºĞ µÚ¿¡ µµÂøÇÒ°Å¾ß! ±×¶§±îÁö¸¸ ¹öÆ¼°í ÀÖ¾î!",
+            "ì—¬ë³´ì„¸ìš”?",
+            "ì—¬ë³´ì„¸ìš”? ë„ˆ ê´œì°®ì•„? íœ´ ë‹¤í–‰ì´ë‹¤.",
+            "ì§€ê¸ˆ ì‹œê°„ì´ ì—†ì–´! ëˆ„êµ°ê°€ ë„ˆë¥¼ ì£½ì´ë ¤ê³ í•´! ",
+            "ë‚´ê°€ ìì„¸í•œê±´ ë‚˜ì¤‘ì— ë‹¤ ì„¤ëª…í• ê²Œ! ì§‘ì—ì„œ ë²„í‹°ê³  ìˆì–´!",
+            "ì‚¼ë¶„ ë’¤ì— ë„ì°©í• ê±°ì•¼! ê·¸ë•Œê¹Œì§€ë§Œ ë²„í‹°ê³  ìˆì–´!",
             "",
-            "¿©º¸¼¼¿ä? ¿©º¸¼¼¿ä? ÀÌ°Ô ¹¹°¡ ¾î¶»°Ô µÈ°Å¾ß?",
-            "»ïºĞ µÚ¿¡ ´©±º°¡ ³ª¸¦ Á×ÀÌ·¯ ¿Â´Ù°í?",
+            "ì—¬ë³´ì„¸ìš”? ì—¬ë³´ì„¸ìš”? ì´ê²Œ ë­ê°€ ì–´ë–»ê²Œ ëœê±°ì•¼?",
+            "ì‚¼ë¶„ ë’¤ì— ëˆ„êµ°ê°€ ë‚˜ë¥¼ ì£½ì´ëŸ¬ ì˜¨ë‹¤ê³ ?",
         };
         dialogues_3 = new string[]
         {
-            "¿©º¸¼¼¿ä?", 
-            "³Ê ±¦Âú¾Æ?"
+            "ì—¬ë³´ì„¸ìš”?", 
+            "ë„ˆ ê´œì°®ì•„?"
         };
         dialogues_4 = new string[]
         {
-            "»ç¶óÁø °Ç°¡? ¿©º¸¼¼¿ä? Àú±â¿ä?",
+            "ì‚¬ë¼ì§„ ê±´ê°€? ì—¬ë³´ì„¸ìš”? ì €ê¸°ìš”?",
             "......"
         };
         dialogues_5 = new string[]
         {
-            "¿©·¯ºĞ ¾È³çÇÏ¼¼¿ä.",
-            "¾îÁ¦ Å©¸®½º¸¶½º´Â Àß ¸¶¹«¸®ÇÏ¼ÌÀ»±î¿ä?",
-            "12¿ù 26ÀÏ ¾ÆÄ§ÀÔ´Ï´Ù.",
-            "¿À´Ã ¾ÆÄ§µµ Ãß¿ì´Ï Ãâ±Ù±æ¿¡ ¿Ê ´Ü´ÜÈ÷ ÀÔ°í °¨±â Á¶½ÉÇÏ¼¼¿ä.",
-            "ÀÌ¾î¼­ ´ÙÀ½ ¼Ò½Ä Àü´Ş µå¸®°Ú½À´Ï´Ù. "
+            "ì—¬ëŸ¬ë¶„ ì•ˆë…•í•˜ì„¸ìš”.",
+            "ì–´ì œ í¬ë¦¬ìŠ¤ë§ˆìŠ¤ëŠ” ì˜ ë§ˆë¬´ë¦¬í•˜ì…¨ì„ê¹Œìš”?",
+            "12ì›” 26ì¼ ì•„ì¹¨ì…ë‹ˆë‹¤.",
+            "ì˜¤ëŠ˜ ì•„ì¹¨ë„ ì¶”ìš°ë‹ˆ ì¶œê·¼ê¸¸ì— ì˜· ë‹¨ë‹¨íˆ ì…ê³  ê°ê¸° ì¡°ì‹¬í•˜ì„¸ìš”.",
+            "ì´ì–´ì„œ ë‹¤ìŒ ì†Œì‹ ì „ë‹¬ ë“œë¦¬ê² ìŠµë‹ˆë‹¤. "
         };
         dialogues_6 = new string[]
         {
-            "¹¹Áö? Àå³­ ÀüÈ­¿´³ª? ",
+            "ë­ì§€? ì¥ë‚œ ì „í™”ì˜€ë‚˜? ",
         };
         dialogues_7 = new string[]
         {
-            "½Å°í¸¦ ¹Ş°í Ãâµ¿Çß½À´Ï´Ù. È¤½Ã ¹«½¼ ¹®Á¦°¡ ÀÖ½À´Ï±î?  ",
+            "ì‹ ê³ ë¥¼ ë°›ê³  ì¶œë™í–ˆìŠµë‹ˆë‹¤. í˜¹ì‹œ ë¬´ìŠ¨ ë¬¸ì œê°€ ìˆìŠµë‹ˆê¹Œ?  ",
         };
         dialogues_8 = new string[]
         {
-            "½Å°í¸¦ ¹Ş°í Ãâµ¿Çß½À´Ï´Ù. È¤½Ã ¹«½¼ ¹®Á¦°¡ ÀÖ½À´Ï±î?  ",
-            "³ª´Â ¸ó½ºÅÍ´Ù ³ª´Â ¸ó½ºÅõÅõÅõ¹T  ",
-            "ÀÇ¹®ÀÇ ¿©¼º´ë»çÀÔ´Ï´Ù. Å×½ºÆ® ÀÔ´ÏÅ×½ºÆ® ¾ê ´ë»ç°¡ ±æ¸é ¹®Á¦ÀÎ°¡??",
-            "´Ù½Ã ³ª´Ù ÁÖÀÎ°ø ³Ê´Ù¶ó¾Æ°¡  ",
+            "ì‹ ê³ ë¥¼ ë°›ê³  ì¶œë™í–ˆìŠµë‹ˆë‹¤. í˜¹ì‹œ ë¬´ìŠ¨ ë¬¸ì œê°€ ìˆìŠµë‹ˆê¹Œ?  ",
+            "ë‚˜ëŠ” ëª¬ìŠ¤í„°ë‹¤ ë‚˜ëŠ” ëª¬ìŠ¤íˆ¬íˆ¬íˆ¬í‰…  ",
+            "ì˜ë¬¸ì˜ ì—¬ì„±ëŒ€ì‚¬ì…ë‹ˆë‹¤. í…ŒìŠ¤íŠ¸ ì…ë‹ˆí…ŒìŠ¤íŠ¸ ì–˜ ëŒ€ì‚¬ê°€ ê¸¸ë©´ ë¬¸ì œì¸ê°€??",
+            "ë‹¤ì‹œ ë‚˜ë‹¤ ì£¼ì¸ê³µ ë„ˆë‹¤ë¼ì•„ê°€  ",
         };
     }
 

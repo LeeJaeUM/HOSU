@@ -36,7 +36,17 @@ public class GameManager : MonoBehaviour
             return interactAction;
         }
     }
- 
+
+    FlashHead flashHead;
+    public FlashHead FlashHead
+    {
+        get
+        {
+            if (flashHead == null)
+                flashHead = FindAnyObjectByType<FlashHead>();
+            return flashHead;
+        }
+    }
 
     [Header("상호작용 가능한지 판단")]
     public bool isWoodPanelHave = false;

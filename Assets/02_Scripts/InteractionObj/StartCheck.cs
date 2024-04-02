@@ -10,13 +10,13 @@ public class StartCheck : MonoBehaviour, IInteractable
     public Action<bool> onCheck;
     [SerializeField]
     CinemachineVirtualCamera startCamera;
-    BoxCollider interact;
+    BoxCollider interactCollider;
 
     private void Awake()
     {
         Transform parent = transform.parent;
         startCamera = parent.GetChild(2).GetComponent<CinemachineVirtualCamera>();
-        interact = GetComponent<BoxCollider>();
+        interactCollider = GetComponent<BoxCollider>();
     }
 
     public void Interaction()
@@ -24,7 +24,7 @@ public class StartCheck : MonoBehaviour, IInteractable
         startCamera.Priority = 0;
         onCheck?.Invoke(isCheck);
         isCheck = true;
-        interact.enabled = false;
+        interactCollider.enabled = false;
     }
 
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Bed : MonoBehaviour ,IInteractable
+public class Bed : InteractFunction ,IInteractable
 {
     [SerializeField]
     CinemachineVirtualCamera bedCamera;
     [SerializeField]
     bool isCameraOn = false;
-
+     
     private void Start()
     {
         bedCamera = GetComponentInChildren<CinemachineVirtualCamera>();

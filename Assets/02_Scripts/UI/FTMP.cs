@@ -13,6 +13,7 @@ public class FTMP : MonoBehaviour
     public float temp = 0.1f;
     public float endTime = 2;
     public float testno = 0;
+    public int startTIme = 8;
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class FTMP : MonoBehaviour
     public Color textColor;
     IEnumerator Start_Co()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(startTIme);
         while (temp < endTime)
         {
             float normalizedTime = temp / endTime ;

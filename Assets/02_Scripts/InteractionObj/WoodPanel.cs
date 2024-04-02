@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodPanel : MonoBehaviour, IInteractable
+public class WoodPanel : InteractFunction, IInteractable
 {
     public void Interaction()
     {

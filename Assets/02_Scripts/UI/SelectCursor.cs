@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SelectCursor : MonoBehaviour
 {
     Image img1;
+    Image img0;
 
     Color imgColor;
 
@@ -14,6 +15,8 @@ public class SelectCursor : MonoBehaviour
     private void Start()
     {
         Transform child = transform.GetChild(0);
+        img0 = child.GetComponent<Image>();
+        child = transform.GetChild(1);
         img1 = child.GetComponent<Image>();
         GameManager.Inst.InteractAction.onInteracAble += SetVisible;
     }
@@ -22,6 +25,7 @@ public class SelectCursor : MonoBehaviour
     {
         if (isVisible)
         {
+            img0.enabled = false;
             imgColor = img1.color;
             float animationDuration = 1.0f; //애니메이션의 전체 시간
             float timePeriod = 2.0f; //코사인 함수의 주기 (2.0f는 반 주기)
@@ -31,6 +35,10 @@ public class SelectCursor : MonoBehaviour
             imgColor.a = finalZeroOne;
             //imgColor.a = finalZeroOne * 0.2f;
             img1.color = imgColor;
+        }
+        else
+        {
+            img0.enabled = true;
         }
     }
 
@@ -44,7 +52,7 @@ public class SelectCursor : MonoBehaviour
     {
         isVisible = true;
         img1.enabled = isVisible;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         isVisible = false;
         img1.enabled = isVisible;
     }

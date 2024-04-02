@@ -16,13 +16,17 @@ public class InteractAction : MonoBehaviour
     [SerializeField] IInteractable interactable;
     public Action onInteracAble;
 
+    public bool isStartBlock = true;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
     }
     private void Start()
     {
-        flash = FlashHead.Inst.GetComponent<Light>();
+        FlashHead flashHead = GameManager.Inst.FlashHead;
+        flash = flashHead.GetComponent<Light>();
+        StartCoroutine(StartBlock());
     }
 
     private void OnEnable()
@@ -42,7 +46,7 @@ public class InteractAction : MonoBehaviour
     private void OnInteract(InputAction.CallbackContext obj)
     {
         // 플레이어가 'e' 키를 눌렀을 때만 상호작용 함수 호출
-        if (interactable != null)
+        if (interactable != null && !isStartBlock)
         {
             // 상호작용 함수 호출
             interactable.Interaction();
@@ -78,5 +82,11 @@ public class InteractAction : MonoBehaviour
                 onInteracAble?.Invoke();
 
         }
+    }
+
+    IEnumerator StartBlock()
+    {
+        yield return new WaitForSeconds(8f);
+        isStartBlock = false;
     }
 }

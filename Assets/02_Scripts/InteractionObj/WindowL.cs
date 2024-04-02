@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindowL : MonoBehaviour, IInteractable
+public class WindowL : InteractFunction, IInteractable
 {
     GameObject woods;
-
     private void Start()
     {
         Transform child = transform.GetChild(1);
@@ -17,6 +16,7 @@ public class WindowL : MonoBehaviour, IInteractable
         {
             woods.SetActive(true);
             GameManager.Inst.isWindowBlockwood_Livingroom = true;
+            InteractBoxOff();
         }
     }
 }
