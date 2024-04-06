@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractFunction : MonoBehaviour
 {
-    BoxCollider interact;
+    protected BoxCollider interact;
 
     protected virtual void Awake()
     {

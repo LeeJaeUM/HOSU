@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class WoodPanel : InteractFunction, IInteractable
 {
+    DialogueManager dialogueManager;
+
+    private void Start()
+    {
+        dialogueManager = DialogueManager.Instance;
+    }
+
     public void Interaction()
     {
         GameManager.Inst.isWoodPanelHave = true;

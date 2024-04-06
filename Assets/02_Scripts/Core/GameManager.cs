@@ -18,10 +18,9 @@ public class GameManager : MonoBehaviour
         else
         {
             Inst = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         onDia2End += Dia2End;
-
         lights = GetComponentsInChildren<Light>();
 
     }
@@ -48,6 +47,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    GoBedUI gobedUI;
+    public GoBedUI GobedUI
+    {
+        get
+        {
+            if (gobedUI == null)
+                gobedUI = FindAnyObjectByType<GoBedUI>();
+            return gobedUI;
+        }
+    }
+
     [Header("상호작용 가능한지 판단")]
     public bool isWoodPanelHave = false;
 
@@ -63,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     [Header("게임 분기 판단")]
     public bool isDia2End = false;
+    public bool isGameClear = false;
 
     [Header("라이트 관련")]
     public bool isLose = true;
@@ -71,11 +82,22 @@ public class GameManager : MonoBehaviour
 
 
     public Action onDia2End;        //DialogueManager 에서 액션 발송 후 여기서 실행
+    public Action onGameClear;      //침대 밑에 숨고 조건 클리어 시 Bed에서 사용
 
     public Light[] lights = new Light[3];
     float[] lightIntensitys = new float[3]; //기존 전등의 세기 저장용
     public void Dia2End()
     {
+        // 정전 시작 후 모든 조건 비활성화
+        isDoorLock_Front = false;
+        isDoorLock_Bedroom = false;
+        isDoorLock_LivingroomWindow = false;
+        isDoorLock_Toilet = false;
+        isDoorLock_Closet = false;
+        isWindowBlockwood_Bedroom = false;
+        isWindowBlockwood_Livingroom = false;
+        isCheck_UnderBed = false;
+
         for(int i= 0; i < lightIntensitys.Length; i++)
         {
             lightIntensitys[i] = lights[i].intensity;

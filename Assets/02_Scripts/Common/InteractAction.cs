@@ -76,7 +76,7 @@ public class InteractAction : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactDistance))
         {
             // Ray에 부딪힌 물체가 IInteract 인터페이스를 가지고 있는지 확인
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
             interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
                 onInteracAble?.Invoke();
@@ -86,7 +86,8 @@ public class InteractAction : MonoBehaviour
 
     IEnumerator StartBlock()
     {
-        yield return new WaitForSeconds(8f);
+        //yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(0.1f);
         isStartBlock = false;
     }
 }

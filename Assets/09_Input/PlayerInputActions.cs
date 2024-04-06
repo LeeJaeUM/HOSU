@@ -62,6 +62,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""cad4aada-b183-48dd-8665-ab3ea5dd1931"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ok"",
+                    ""type"": ""Button"",
+                    ""id"": ""e2578e73-e87d-4f23-923a-0400653de1c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -150,6 +168,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Light"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fae48b80-3a7e-4f6b-a3c1-3c580244c053"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""793a2e53-ed8a-4d9e-8bca-cf29bb5f4d23"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ok"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -251,6 +291,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
+        m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
+        m_Player_Ok = m_Player.FindAction("Ok", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
@@ -320,6 +362,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Light;
+    private readonly InputAction m_Player_Quit;
+    private readonly InputAction m_Player_Ok;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -328,6 +372,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Light => m_Wrapper.m_Player_Light;
+        public InputAction @Quit => m_Wrapper.m_Player_Quit;
+        public InputAction @Ok => m_Wrapper.m_Player_Ok;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -349,6 +395,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Light.started += instance.OnLight;
             @Light.performed += instance.OnLight;
             @Light.canceled += instance.OnLight;
+            @Quit.started += instance.OnQuit;
+            @Quit.performed += instance.OnQuit;
+            @Quit.canceled += instance.OnQuit;
+            @Ok.started += instance.OnOk;
+            @Ok.performed += instance.OnOk;
+            @Ok.canceled += instance.OnOk;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -365,6 +417,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Light.started -= instance.OnLight;
             @Light.performed -= instance.OnLight;
             @Light.canceled -= instance.OnLight;
+            @Quit.started -= instance.OnQuit;
+            @Quit.performed -= instance.OnQuit;
+            @Quit.canceled -= instance.OnQuit;
+            @Ok.started -= instance.OnOk;
+            @Ok.performed -= instance.OnOk;
+            @Ok.canceled -= instance.OnOk;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -451,6 +509,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnLight(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
+        void OnOk(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
