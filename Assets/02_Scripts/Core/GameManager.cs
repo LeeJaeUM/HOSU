@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         }
         onDia2End += Dia2End;
         lights = GetComponentsInChildren<Light>();
+        gobedUI.onClickGobedUI += OnCheckEndingCondition;
 
     }
 
@@ -86,6 +87,9 @@ public class GameManager : MonoBehaviour
 
     public Light[] lights = new Light[3];
     float[] lightIntensitys = new float[3]; //기존 전등의 세기 저장용
+
+    #region Light&Dia2 Function
+
     public void Dia2End()
     {
         // 정전 시작 후 모든 조건 비활성화
@@ -94,8 +98,8 @@ public class GameManager : MonoBehaviour
         isDoorLock_LivingroomWindow = false;
         isDoorLock_Toilet = false;
         isDoorLock_Closet = false;
-        isWindowBlockwood_Bedroom = false;
-        isWindowBlockwood_Livingroom = false;
+        //isWindowBlockwood_Bedroom = false;
+        //isWindowBlockwood_Livingroom = false;
         isCheck_UnderBed = false;
 
         for(int i= 0; i < lightIntensitys.Length; i++)
@@ -144,4 +148,24 @@ public class GameManager : MonoBehaviour
             light.enabled = false;
         }
     }
+
+    #endregion
+
+
+    /// <summary>
+    /// 엔딩 조건을 체크해서 클리어인지 확인하는 함수
+    /// </summary>
+    /// <param name="isOk">true면 조건 체크</param>
+    private void OnCheckEndingCondition(bool isOk)
+    {
+        //침대 밑에 숨지 않을 때 false
+        if (!isOk)
+            return;
+        //침대 밑에 숨어서 엔딩 조건을 체크 할 때
+        else
+        {
+           // if (isDoorLock_Front)
+        }
+    }
+
 }

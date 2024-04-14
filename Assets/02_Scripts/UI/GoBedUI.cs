@@ -43,7 +43,7 @@ public class GoBedUI : MonoBehaviour
     private void ClickOk(InputAction.CallbackContext obj)       // ok 클릭
     {
         onClickGobedUI?.Invoke(true); 
-        checkImage.gameObject.SetActive(true);
+        checkImage.gameObject.SetActive(false);
     }
     private void ClickNo(InputAction.CallbackContext obj)       // no 클릭
     {
