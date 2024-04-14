@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    GoBedUI gobedUI;
+    public GoBedUI gobedUI;
     public GoBedUI GobedUI
     {
         get
@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
     public bool isWindowBlockwood_Bedroom = false;      //침실 창문 방지
     public bool isWindowBlockwood_Livingroom = false;   //거실 창문 방지
     public bool isCheck_UnderBed = false;               //침대 아래 확인
+
+    public Action<int> onCheckEndingCondition;
+    List<bool> conditions;
 
     [Header("게임 분기 판단")]
     public bool isDia2End = false;
@@ -164,7 +167,15 @@ public class GameManager : MonoBehaviour
         //침대 밑에 숨어서 엔딩 조건을 체크 할 때
         else
         {
-           // if (isDoorLock_Front)
+            conditions = new List<bool> 
+            { isDoorLock_Front, isDoorLock_Bedroom, isDoorLock_LivingroomWindow,
+                                                        isDoorLock_Toilet, isDoorLock_Closet,
+                                                        isWindowBlockwood_Bedroom, isWindowBlockwood_Livingroom, isCheck_UnderBed};
+
+            for(int i=0; i < conditions.Count; i++)
+            {
+                Debug.Log(conditions[i]);
+            }
         }
     }
 
